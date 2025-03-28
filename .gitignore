@@ -6,3 +6,10 @@ debug
 foo.*
 *.log
 data
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
