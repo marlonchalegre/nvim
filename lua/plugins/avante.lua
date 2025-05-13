@@ -3,9 +3,11 @@ return {
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
   opts = {
-    -- add any opts here
-    -- for example
     provider = "internal",
+    cursor_applying_provider = "internal",
+    behaviour = {
+      enable_cursor_planning_mode = true, -- enable cursor planning mode!
+    },
     vendors = {
       internal = {
         __inherited_from = "openai",
@@ -16,7 +18,6 @@ return {
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = "make",
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "stevearc/dressing.nvim",
@@ -29,18 +30,6 @@ return {
       -- support for image pasting
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",
-      init = function()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "ToggleMyPrompt",
-          callback = function()
-            require("avante.config").override({ system_prompt = "MY CUSTOM SYSTEM PROMPT" })
-          end,
-        })
-
-        vim.keymap.set("n", "<leader>am", function()
-          vim.api.nvim_exec_autocmds("User", { pattern = "ToggleMyPrompt" })
-        end, { desc = "avante: toggle my prompt" })
-      end,
       opts = {
         -- recommended settings
         default = {
