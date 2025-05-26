@@ -1,14 +1,16 @@
 return {
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+  "zbirenbaum/copilot.lua",
+  event = "InsertEnter",
+  opts = {
+    panel = {
+      enabled = false,
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
-    opts = {
-      -- See Configuration section for options
+    suggestion = {
+      auto_trigger = true,
+      hide_during_completion = false,
+      keymap = {
+        accept = "<Tab>",
+      },
     },
-    -- See Commands section for default commands if you want to lazy load on them
   },
 }
