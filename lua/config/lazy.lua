@@ -52,6 +52,11 @@ require("lazy").setup({
   },
 })
 
-require("gitsigns").setup({
-  current_line_blame = true,
-})
+if vim.g.vscode then
+  require "config.vscode_keymaps"
+else
+  require("gitsigns").setup({
+    current_line_blame = true,
+  })
+end
+
