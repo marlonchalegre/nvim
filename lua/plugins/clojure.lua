@@ -91,7 +91,7 @@ return {
         pattern = "conjure-log-*",
         callback = function()
           local buffer = vim.api.nvim_get_current_buf()
-          vim.diagnostic.disable(buffer)
+          vim.diagnostic.enable(false, { bufnr = buffer })
           if colorize and vim.g.conjure_baleia then
             vim.g.conjure_baleia.automatically(buffer)
           end
