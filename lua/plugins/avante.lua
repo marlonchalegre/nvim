@@ -9,6 +9,11 @@ return {
       enable_cursor_planning_mode = true, -- enable cursor planning mode!
     },
     providers = {
+      -- copilot = {
+      --   __inherited_from = "copilot",
+      --   model = "claude-sonnet-4", -- your desired model (or use github.copilot.chat, etc.)
+      -- },
+      --
       internal = {
         __inherited_from = "openai",
         endpoint = "http://127.0.0.1:8899/v1",
@@ -45,4 +50,20 @@ return {
       },
     },
   },
+  config = function()
+    require("avante").setup({
+      -- system_prompt as function ensures LLM always has latest MCP server state
+      -- This is evaluated for every message, even in existing chats
+      system_prompt = function()
+        local hub = require("mcphub").get_hub_instance()
+        return hub and hub:get_active_servers_prompt() or ""
+      end,
+      -- Using function prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require("mcphub.extensions.avante").mcp_tool(),
+        }
+      end,
+    })
+  end,
 }
