@@ -7,7 +7,7 @@ return {
     ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
     opts = {
       preview = {
-        filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+        filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante", "codecompanion" },
         ignore_buftypes = {},
         max_length = 99999,
       },

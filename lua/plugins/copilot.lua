@@ -6,11 +6,18 @@ return {
       enabled = false,
     },
     suggestion = {
-      auto_trigger = true,
-      hide_during_completion = false,
-      keymap = {
-        accept = "<Tab>",
-      },
+      enabled = false,
+      -- auto_trigger = true,
+      -- hide_during_completion = false,
+      -- keymap = {
+      --   accept = "<Tab>",
+      -- },
     },
   },
+  -- config = function()
+  --   require("copilot").setup({
+  --     suggestion = { enabled = false },
+  --     panel = { enabled = false },
+  --   })
+  -- end,
 }
