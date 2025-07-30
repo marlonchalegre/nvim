@@ -1,28 +1,23 @@
 return {
   "yetone/avante.nvim",
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = "make",
   event = "VeryLazy",
   version = false, -- Never set this value to "*"! Never!
+  ---@module 'avante'
+  ---@type avante.Config
   opts = {
+    -- add any opts here
+    -- for example
     provider = "copilot",
-    --cursor_applying_provider = "internal",
-    behaviour = {
-      enable_cursor_planning_mode = true, -- enable cursor planning mode!
-    },
     providers = {
-      -- copilot = {
-      --   __inherited_from = "copilot",
-      --   model = "claude-sonnet-4", -- your desired model (or use github.copilot.chat, etc.)
-      -- },
-      --
-      internal = {
+      ineternal = {
         __inherited_from = "openai",
         endpoint = "http://127.0.0.1:8899/v1",
-        model = "gpt-4.1", -- your desired model (or use gpt-4o, etc.)
+        model = "claude-4-sonnet",
       },
     },
   },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     "stevearc/dressing.nvim",
