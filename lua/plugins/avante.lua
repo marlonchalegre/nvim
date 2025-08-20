@@ -11,10 +11,29 @@ return {
     -- for example
     provider = "copilot",
     providers = {
-      ineternal = {
+      ["internal-gpt"] = {
         __inherited_from = "openai",
         endpoint = "http://127.0.0.1:8899/v1",
-        model = "claude-4-sonnet",
+        model = "openai/gpt-4o",
+        timeout = 30000,
+        is_env_set = function()
+          return true
+        end,
+      },
+      internal = {
+        __inherited_from = "openai",
+        endpoint = "http://127.0.0.1:8899/v1",
+        --model = "gpt-4.1",
+        is_env_set = function()
+          return true
+        end,
+      },
+      ollama = {
+        endpoint = "http://127.0.0.1:11434", -- Local Ollama (no /v1)
+        model = "qwen3:30b-a3b-thinking-2507-q8_0", -- pull via `ollama pull`
+        is_env_set = function()
+          return true
+        end,
       },
     },
   },
