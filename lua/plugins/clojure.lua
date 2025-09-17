@@ -23,7 +23,7 @@ return {
   },
 
   -- Add s-exp mappings
-  { "echasnovski/mini.surround" },
+  { "nvim-mini/mini.surround" },
   { "julienvincent/nvim-paredit", opts = {} },
   { "gpanders/nvim-parinfer" },
 
